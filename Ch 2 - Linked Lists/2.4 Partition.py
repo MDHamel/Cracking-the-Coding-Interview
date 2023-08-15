@@ -30,21 +30,19 @@ def partitionList(n: Node, partition: int):
 
         n = n.next
 
-    print(leftHead.next)
-
     leftHead = leftHead.next
     rightHead = rightHead.next
 
     left.next = rightHead
 
     # returns a new linked list instead of just the head node
-    return LinkedList(leftHead)
+    return leftHead
 
 
 ll = LinkedList([3, 5, 8, 5, 10, 2, 1])
 print(ll)
 partitionList(ll.getRoot(), 5)
-print(partitionList(ll.getRoot(), 5))
+print(LinkedList(partitionList(ll.getRoot(), 5)))
 
 # O(n) time complexity, going through each element in the linked list
 # Output varies BUT fulfills the criteria

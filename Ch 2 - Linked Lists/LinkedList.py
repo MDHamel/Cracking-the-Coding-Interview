@@ -29,12 +29,14 @@ class LinkedList:
             self.appendValues(val)
             return
 
+        newNode = val if isinstance(val, Node) else Node(val)
+
         if self.root:
-            n = Node(val)
+            n = newNode
             self.tail.next = n
             self.tail = n
         else:
-            self.root = Node(val)
+            self.root = newNode
             self.tail = self.root
 
         self.size += 1
@@ -111,6 +113,14 @@ class LinkedList:
             return True
 
         return False
+
+    def get(self, index: int):
+        n = self.root
+
+        for _ in range(index):
+            n = n.next
+
+        return n
 
     def __contains__(self, item):
         cur = self.root
